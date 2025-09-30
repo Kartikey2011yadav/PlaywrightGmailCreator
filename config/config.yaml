@@ -1,0 +1,29 @@
+# Default configuration for Gmail Creator
+# This is a minimal configuration for getting started
+
+account:
+  batch_size: 3
+  delay_between_accounts: [10, 20]
+  delay_between_actions: [1, 3]
+  max_retries: 3
+  save_to_file: true
+  output_format: "json"
+
+browser:
+  browser_type: "chromium"
+  headless: false
+  viewport_width: 1920
+  viewport_height: 1080
+
+proxy:
+  enabled: false
+
+stealth:
+  randomize_fingerprints: true
+  stealth_plugin_enabled: true
+
+logging:
+  level: "INFO"
+  console_enabled: true
+  file_enabled: true
+  colored_console: true

@@ -1,0 +1,57 @@
+# Advanced configuration with all features enabled
+proxy:
+  enabled: true
+  auto_fetch_free: true
+  rotation_method: "best"
+  preferred_countries: ["US", "UK", "CA"]
+  health_check_interval: 300
+  max_failures: 3
+  timeout: 10
+
+browser:
+  browser_type: "chromium"
+  headless: true
+  viewport_width: 1920
+  viewport_height: 1080
+  disable_web_security: true
+  additional_args:
+    - "--no-first-run"
+    - "--no-default-browser-check"
+    - "--disable-blink-features=AutomationControlled"
+
+account:
+  batch_size: 10
+  delay_between_accounts: [20, 60]
+  delay_between_actions: [2, 5]
+  max_retries: 5
+  retry_delay: 120
+  output_format: "json"
+  save_to_file: true
+
+user_profile:
+  use_real_names: true
+  supported_locales: ["en_US", "en_GB", "es_ES", "fr_FR", "de_DE"]
+  age_range: [18, 65]
+  password_length: 16
+  use_complex_passwords: true
+
+stealth:
+  randomize_fingerprints: true
+  randomize_user_agents: true
+  randomize_screen_resolution: true
+  randomize_timezone: true
+  randomize_language: true
+  stealth_plugin_enabled: true
+  navigator_webdriver_override: true
+  chrome_runtime_override: true
+  permissions_override: true
+  plugins_override: true
+
+logging:
+  level: "DEBUG"
+  console_enabled: true
+  file_enabled: true
+  max_file_size: 50
+  backup_count: 10
+  colored_console: true
+  rich_console: true

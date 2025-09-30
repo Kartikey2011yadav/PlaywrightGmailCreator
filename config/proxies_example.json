@@ -1,0 +1,29 @@
+[
+  {
+    "host": "proxy1.example.com",
+    "port": 8080,
+    "type": "http",
+    "username": null,
+    "password": null,
+    "country": "US",
+    "city": "New York"
+  },
+  {
+    "host": "proxy2.example.com",
+    "port": 3128,
+    "type": "http",
+    "username": "user123",
+    "password": "pass456",
+    "country": "UK",
+    "city": "London"
+  },
+  {
+    "host": "proxy3.example.com",
+    "port": 1080,
+    "type": "socks5",
+    "username": "socks_user",
+    "password": "socks_pass",
+    "country": "CA",
+    "city": "Toronto"
+  }
+]

@@ -1,0 +1,10 @@
+# Minimal configuration for basic usage
+account:
+  batch_size: 3
+  delay_between_accounts: [5, 15]
+
+browser:
+  headless: false
+
+logging:
+  level: "INFO"

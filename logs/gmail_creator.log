@@ -1,0 +1,5 @@
+2025-09-30 14:12:42 - gmail_creator - INFO - Logging system initialized
+2025-09-30 14:12:42 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 14:12:42 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 14:12:42 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 14:12:42 - gmail_creator - INFO - Gmail Creator Application initialized
