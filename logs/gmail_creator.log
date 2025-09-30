@@ -3,3 +3,106 @@
 2025-09-30 14:12:42 - src.account_manager - INFO - Database initialized successfully
 2025-09-30 14:12:42 - src.account_manager - INFO - Loaded 0 accounts from database
 2025-09-30 14:12:42 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 14:19:14 - gmail_creator - INFO - Logging system initialized
+2025-09-30 14:19:14 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 14:19:14 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 14:19:14 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 14:19:14 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 14:27:04 - gmail_creator - INFO - Logging system initialized
+2025-09-30 14:27:04 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 14:27:04 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 14:27:04 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 14:27:04 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 15:39:08 - gmail_creator - INFO - Logging system initialized
+2025-09-30 15:39:08 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 15:39:08 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 15:39:08 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 15:39:08 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 16:42:47 - gmail_creator - INFO - Logging system initialized
+2025-09-30 16:42:47 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 16:42:47 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 16:42:47 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 16:42:47 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 16:44:00 - gmail_creator - INFO - Logging system initialized
+2025-09-30 16:44:00 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 16:44:00 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 16:44:00 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 16:44:00 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 16:50:53 - gmail_creator - INFO - Logging system initialized
+2025-09-30 16:50:53 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 16:50:53 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 16:50:53 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 16:50:53 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 16:55:58 - gmail_creator - INFO - Logging system initialized
+2025-09-30 16:55:58 - gmail_creator - INFO - Project directories created/verified
+2025-09-30 16:55:58 - src.account_manager - INFO - Database initialized successfully
+2025-09-30 16:55:58 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-09-30 16:55:58 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-09-30 16:55:58 - src.proxy_manager - INFO - Testing all proxies...
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: 400, message='Bad Request', url='socks4://203.30.189.85:80'
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: 400, message='Bad Request', url='socks4://203.30.190.30:80'
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 403
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: HTTP 403
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: Server disconnected
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Cannot connect to host 109.236.86.221:15279 ssl:default [Connect call failed ('109.236.86.221', 15279)]
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-09-30 16:55:58 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-09-30 16:55:59 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-09-30 16:56:08 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-09-30 16:56:08 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-09-30 16:56:08 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-09-30 16:56:08 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-09-30 16:56:08 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-09-30 16:56:08 - src.account_manager - INFO - Started batch c58f6a6b-8ef8-4899-994d-6b6ed30dcaa6 for 3 accounts
+2025-09-30 16:56:08 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-09-30 16:56:08 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-09-30 16:56:08 - src.gmail_creator - INFO - Creating account 1/3
+2025-09-30 16:56:08 - src.proxy_manager - WARNING - No active proxies available
+2025-09-30 16:56:08 - src.gmail_creator - INFO - Creating account for Carmen Ramos
+2025-09-30 16:56:09 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-09-30 16:56:53 - src.gmail_creator - ERROR - Timeout during account creation: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('Next')")
+
+2025-09-30 16:56:53 - src.gmail_creator - INFO - Waiting 17 seconds before next account...
+2025-09-30 16:57:10 - src.gmail_creator - INFO - Creating account 2/3
+2025-09-30 16:57:10 - src.proxy_manager - WARNING - No active proxies available
+2025-09-30 16:57:10 - src.gmail_creator - INFO - Creating account for Nicole Thomas
+2025-09-30 16:57:10 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-09-30 16:57:40 - src.gmail_creator - ERROR - Timeout during account creation: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']") to be visible
+
+2025-09-30 16:57:40 - src.gmail_creator - INFO - Waiting 18 seconds before next account...
+2025-09-30 16:57:58 - src.gmail_creator - INFO - Creating account 3/3
+2025-09-30 16:57:58 - src.proxy_manager - WARNING - No active proxies available
+2025-09-30 16:57:58 - src.gmail_creator - INFO - Creating account for Sydney Rodriguez
+2025-09-30 16:57:58 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-09-30 16:58:42 - src.gmail_creator - ERROR - Timeout during account creation: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('Next')")
+
+2025-09-30 16:58:42 - src.gmail_creator - INFO - Final report saved to: /run/media/darth-kartikey/Drive/Gmail/AutomateGmail/PlaywrightGmailCreator/output/creation_report_20250930_165842.json
+2025-09-30 16:58:42 - src.gmail_creator - INFO - 📊 Creation Summary: 0/3 successful
+2025-09-30 16:58:42 - src.account_manager - INFO - Finished batch c58f6a6b-8ef8-4899-994d-6b6ed30dcaa6: 0 successful, 3 failed
+2025-09-30 16:58:42 - gmail_creator - INFO - Batch creation completed: 0/3 successful

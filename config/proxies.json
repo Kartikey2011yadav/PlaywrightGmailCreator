@@ -1,0 +1,137 @@
+[
+  {
+    "host": "85.25.177.53",
+    "port": 58851,
+    "type": "socks4",
+    "country": "FR",
+    "anonymity": "elite",
+    "latency": 0.346,
+    "uptime": 100
+  },
+  {
+    "host": "203.13.32.47",
+    "port": 80,
+    "type": "socks4",
+    "country": "CY",
+    "anonymity": "elite",
+    "latency": 3.467,
+    "uptime": 100
+  },
+  {
+    "host": "203.23.104.167",
+    "port": 80,
+    "type": "socks5",
+    "country": "CY",
+    "anonymity": "elite",
+    "latency": 3.374,
+    "uptime": 100
+  },
+  {
+    "host": "34.110.150.54",
+    "port": 3128,
+    "type": "socks5",
+    "country": "US",
+    "anonymity": "elite",
+    "latency": 3.505,
+    "uptime": 100
+  },
+  {
+    "host": "51.15.187.125",
+    "port": 5836,
+    "type": "socks4",
+    "country": "FR",
+    "anonymity": "elite",
+    "latency": 6.662,
+    "uptime": 100
+  },
+  {
+    "host": "35.244.232.197",
+    "port": 80,
+    "type": "socks4",
+    "country": "US",
+    "anonymity": "elite",
+    "latency": 6.499,
+    "uptime": 100
+  },
+  {
+    "host": "34.117.70.177",
+    "port": 80,
+    "type": "socks4",
+    "country": "US",
+    "anonymity": "elite",
+    "latency": 6.501,
+    "uptime": 100
+  },
+  {
+    "host": "203.30.189.85",
+    "port": 80,
+    "type": "socks4",
+    "country": "BZ",
+    "anonymity": "elite",
+    "latency": 7.011,
+    "uptime": 100
+  },
+  {
+    "host": "203.30.190.30",
+    "port": 80,
+    "type": "socks4",
+    "country": "BZ",
+    "anonymity": "elite",
+    "latency": 7.024,
+    "uptime": 100
+  },
+  {
+    "host": "163.172.48.119",
+    "port": 15016,
+    "type": "socks4",
+    "country": "FR",
+    "anonymity": "elite",
+    "latency": 6.614,
+    "uptime": 100
+  },
+  {
+    "host": "51.159.221.176",
+    "port": 17676,
+    "type": "socks4",
+    "country": "FR",
+    "anonymity": "elite",
+    "latency": 9.478,
+    "uptime": 100
+  },
+  {
+    "host": "141.94.174.6",
+    "port": 37876,
+    "type": "socks4",
+    "country": "FR",
+    "anonymity": "elite",
+    "latency": 11.819,
+    "uptime": 100
+  },
+  {
+    "host": "178.132.5.26",
+    "port": 16937,
+    "type": "socks4",
+    "country": "NL",
+    "anonymity": "elite",
+    "latency": 12.436,
+    "uptime": 100
+  },
+  {
+    "host": "77.93.220.68",
+    "port": 61556,
+    "type": "socks4",
+    "country": "CZ",
+    "anonymity": "elite",
+    "latency": 12.416,
+    "uptime": 100
+  },
+  {
+    "host": "109.236.86.221",
+    "port": 15279,
+    "type": "socks4",
+    "country": "NL",
+    "anonymity": "elite",
+    "latency": 17.303,
+    "uptime": 100
+  }
+]

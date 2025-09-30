@@ -246,30 +246,36 @@ class ConfigManager:
             for key, value in updates.items():
                 if hasattr(obj, key):
                     attr = getattr(obj, key)
-                    if hasattr(attr, '__dataclass_fields__'):
-                        # Nested dataclass
-                        if isinstance(value, dict):
-                            update_dataclass(attr, value)
+                    # Check if this is a nested dataclass by checking the field annotation
+                    if hasattr(obj, '__dataclass_fields__') and key in obj.__dataclass_fields__:
+                        field = obj.__dataclass_fields__[key]
+                        if hasattr(field.type, '__dataclass_fields__'):
+                            # Nested dataclass
+                            if isinstance(value, dict):
+                                update_dataclass(attr, value)
+                        else:
+                            # Simple attribute
+                            if key in ['browser_type'] and isinstance(value, str):
+                                # Handle enum conversion
+                                try:
+                                    setattr(obj, key, BrowserType(value))
+                                except ValueError:
+                                    continue
+                            elif key in ['level'] and isinstance(value, str):
+                                try:
+                                    setattr(obj, key, LogLevel(value))
+                                except ValueError:
+                                    continue
+                            else:
+                                setattr(obj, key, value)
                     elif hasattr(attr, '__dict__'):
                         # Object with dict
                         for sub_key, sub_value in value.items():
                             if hasattr(attr, sub_key):
                                 setattr(attr, sub_key, sub_value)
                     else:
-                        # Simple attribute
-                        if key in ['browser_type'] and isinstance(value, str):
-                            # Handle enum conversion
-                            try:
-                                setattr(obj, key, BrowserType(value))
-                            except ValueError:
-                                continue
-                        elif key in ['level'] and isinstance(value, str):
-                            try:
-                                setattr(obj, key, LogLevel(value))
-                            except ValueError:
-                                continue
-                        else:
-                            setattr(obj, key, value)
+                        # Simple attribute - fallback
+                        setattr(obj, key, value)
         
         update_dataclass(self.config, data)
     

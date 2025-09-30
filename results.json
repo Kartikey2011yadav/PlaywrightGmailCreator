@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "total_requested": 3,
+  "successful_accounts": 0,
+  "failed_accounts": 3,
+  "success_rate": 0.0,
+  "accounts": [],
+  "failures": [
+    {
+      "error": "Timeout during account creation: Page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Next')\")\n",
+      "status": "timeout"
+    },
+    {
+      "error": "Timeout during account creation: Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"input[name='Username']\") to be visible\n",
+      "status": "timeout"
+    },
+    {
+      "error": "Timeout during account creation: Page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Next')\")\n",
+      "status": "timeout"
+    }
+  ],
+  "timestamp": "2025-09-30T16:58:42.124838"
+}

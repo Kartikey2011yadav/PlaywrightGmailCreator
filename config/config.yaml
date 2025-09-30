@@ -16,7 +16,14 @@ browser:
   viewport_height: 1080
 
 proxy:
-  enabled: false
+  enabled: true
+  auto_fetch_free: false
+  proxy_file: "config/proxies.json"
+  rotation_method: "random"
+  preferred_countries: ["US", "FR", "CY", "BZ", "NL", "CZ"]
+  health_check_interval: 300
+  max_failures: 3
+  timeout: 10
 
 stealth:
   randomize_fingerprints: true

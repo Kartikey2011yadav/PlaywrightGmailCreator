@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "total_attempts": 3,
+    "successful_creations": 0,
+    "failed_creations": 3,
+    "success_rate": 0.0,
+    "duration_seconds": 153.276119,
+    "accounts_per_hour": 0.0
+  },
+  "details": {
+    "proxy_failures": 0,
+    "captcha_encounters": 0,
+    "phone_verification_required": 0
+  },
+  "configuration": {
+    "proxy_enabled": true,
+    "browser_type": "chromium",
+    "headless_mode": false,
+    "batch_size": 3,
+    "stealth_enabled": true,
+    "logging_level": "INFO",
+    "output_format": "json"
+  },
+  "timestamp": "2025-09-30T16:58:42.111130"
+}
