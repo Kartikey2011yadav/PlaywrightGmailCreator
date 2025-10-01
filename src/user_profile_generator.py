@@ -295,26 +295,100 @@ class UserProfileGenerator:
         }
     
     def generate_username(self, first_name: str, last_name: str) -> str:
-        """Generate username variations"""
+        """Generate Gmail-compliant username variations"""
         first_clean = unidecode(first_name.lower())
         last_clean = unidecode(last_name.lower())
         
-        # Remove special characters
-        first_clean = re.sub(r'[^a-z]', '', first_clean)
-        last_clean = re.sub(r'[^a-z]', '', last_clean)
+        # Remove special characters - only allow a-z, 0-9, and periods
+        first_clean = re.sub(r'[^a-z0-9]', '', first_clean)
+        last_clean = re.sub(r'[^a-z0-9]', '', last_clean)
         
+        # Ensure we have valid characters
+        if not first_clean:
+            first_clean = "user"
+        if not last_clean:
+            last_clean = "account"
+        
+        # Gmail-compliant patterns (6-30 characters, no consecutive periods, no starting/ending periods)
         patterns = [
             f"{first_clean}.{last_clean}",
             f"{first_clean}{last_clean}",
-            f"{first_clean}_{last_clean}",
             f"{first_clean[0]}{last_clean}",
             f"{first_clean}{last_clean[0]}",
             f"{first_clean}.{last_clean}{random.randint(1, 99)}",
             f"{first_clean}{random.randint(10, 99)}",
-            f"{first_clean}{last_clean}{random.randint(1990, 2005)}"
+            f"{first_clean}{last_clean}{random.randint(10, 99)}",
+            f"{first_clean[:3]}.{last_clean[:3]}{random.randint(1, 999)}",
+            f"{first_clean}.{random.randint(1990, 2005)}",
+            f"{last_clean}.{random.randint(10, 999)}"
         ]
         
-        return random.choice(patterns)
+        # Select a pattern and validate it meets Gmail requirements
+        for _ in range(10):  # Try up to 10 times to get a valid username
+            username = random.choice(patterns)
+            
+            # Validate Gmail username constraints
+            if self._is_valid_gmail_username(username):
+                return username
+            
+        # Fallback: create a simple valid username
+        fallback = f"{first_clean}{random.randint(1000, 9999)}"
+        return self._ensure_valid_gmail_username(fallback)
+    
+    def _is_valid_gmail_username(self, username: str) -> bool:
+        """Check if username meets Gmail requirements"""
+        # Length check (6-30 characters)
+        if len(username) < 6 or len(username) > 30:
+            return False
+            
+        # Character check (only lowercase letters, numbers, periods)
+        if not re.match(r'^[a-z0-9.]+$', username):
+            return False
+            
+        # Cannot start or end with period
+        if username.startswith('.') or username.endswith('.'):
+            return False
+            
+        # Cannot have consecutive periods
+        if '..' in username:
+            return False
+            
+        # Check for reserved terms
+        reserved_terms = [
+            'abuse', 'postmaster', 'admin', 'administrator', 'hostmaster',
+            'majordomo', 'www', 'ftp', 'mail', 'noreply', 'no-reply'
+        ]
+        
+        if username.lower() in reserved_terms:
+            return False
+            
+        return True
+    
+    def _ensure_valid_gmail_username(self, username: str) -> str:
+        """Ensure username meets Gmail requirements by modifying it"""
+        # Convert to lowercase and remove invalid characters
+        username = re.sub(r'[^a-z0-9.]', '', username.lower())
+        
+        # Remove consecutive periods
+        while '..' in username:
+            username = username.replace('..', '.')
+            
+        # Remove leading/trailing periods
+        username = username.strip('.')
+        
+        # Ensure minimum length
+        if len(username) < 6:
+            username += str(random.randint(1000, 9999))
+            
+        # Ensure maximum length  
+        if len(username) > 30:
+            username = username[:25] + str(random.randint(10, 99))
+            
+        # Final validation - if still invalid, use simple fallback
+        if not self._is_valid_gmail_username(username):
+            username = f"user{random.randint(100000, 999999)}"
+            
+        return username
     
     def generate_password(self) -> str:
         """Generate secure password"""

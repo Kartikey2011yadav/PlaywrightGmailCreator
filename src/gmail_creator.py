@@ -298,14 +298,16 @@ class GmailCreator:
         # Wait for username field
         await page.wait_for_selector(self.selectors["username"], timeout=10000)
         
-        # Try different username variations
-        username_base = user_profile.username
+        # Generate Gmail-compliant username variations
+        username_base = self._ensure_gmail_compliant_username(user_profile.username)
         username = username_base
         attempts = 0
-        max_attempts = 5
+        max_attempts = 8
         
         while attempts < max_attempts:
             try:
+                logger.debug(f"Trying username: {username} (attempt {attempts + 1})")
+                
                 # Clear and enter username
                 await page.fill(self.selectors["username"], "")
                 await self._random_delay(0.3, 0.7)
@@ -316,26 +318,24 @@ class GmailCreator:
                 await page.click(self.selectors["next_button"])
                 
                 # Wait for response
-                await page.wait_for_timeout(2000)
+                await page.wait_for_timeout(3000)
                 
                 # Check if username is taken
                 username_taken = await page.query_selector(self.selectors["username_taken"])
                 if not username_taken:
-                    logger.info(f"Username '{username}' is available")
+                    logger.info(f"✅ Username '{username}' is available")
                     break
                 else:
-                    # Generate new username variation
+                    # Generate new Gmail-compliant username variation
                     attempts += 1
-                    random_suffix = random.randint(100, 9999)
-                    username = f"{username_base}{random_suffix}"
+                    username = self._generate_username_variation(username_base, attempts)
                     logger.debug(f"Username taken, trying: {username}")
                     
             except Exception as e:
                 logger.warning(f"Error checking username availability: {e}")
                 attempts += 1
                 if attempts < max_attempts:
-                    random_suffix = random.randint(100, 9999)
-                    username = f"{username_base}{random_suffix}"
+                    username = self._generate_username_variation(username_base, attempts)
         
         if attempts >= max_attempts:
             raise GmailCreationError("Could not find available username")
@@ -343,6 +343,59 @@ class GmailCreator:
         await page.wait_for_load_state("networkidle")
         await self._random_delay(2, 4)
         return username
+    
+    def _ensure_gmail_compliant_username(self, username: str) -> str:
+        """Ensure username meets Gmail requirements"""
+        import re
+        
+        # Convert to lowercase and remove invalid characters
+        username = re.sub(r'[^a-z0-9.]', '', username.lower())
+        
+        # Remove consecutive periods
+        while '..' in username:
+            username = username.replace('..', '.')
+            
+        # Remove leading/trailing periods
+        username = username.strip('.')
+        
+        # Ensure minimum length
+        if len(username) < 6:
+            username += str(random.randint(1000, 9999))
+            
+        # Ensure maximum length  
+        if len(username) > 30:
+            username = username[:25] + str(random.randint(10, 99))
+            
+        # Check for reserved terms
+        reserved_terms = ['abuse', 'postmaster', 'admin', 'administrator', 'hostmaster']
+        if username.lower() in reserved_terms:
+            username = f"user{username}{random.randint(10, 99)}"
+            
+        return username
+    
+    def _generate_username_variation(self, base_username: str, attempt: int) -> str:
+        """Generate Gmail-compliant username variations"""
+        import re
+        
+        # Clean base username
+        base = re.sub(r'[^a-z0-9.]', '', base_username.lower()).strip('.')
+        
+        variations = [
+            f"{base}{random.randint(10, 99)}",
+            f"{base}{random.randint(100, 999)}",
+            f"{base}.{random.randint(10, 99)}",
+            f"{base}{random.randint(1990, 2025)}",
+            f"{base}.{random.randint(1, 999)}",
+            f"{base[:8]}{random.randint(1000, 9999)}",
+            f"{base}.user{random.randint(1, 99)}",
+            f"user.{base}{random.randint(1, 99)}"
+        ]
+        
+        # Select variation based on attempt number
+        variation = variations[attempt % len(variations)]
+        
+        # Ensure it meets Gmail requirements
+        return self._ensure_gmail_compliant_username(variation)
     
     async def _set_password(self, page: Page, user_profile: UserProfile):
         """Set account password"""
@@ -402,10 +455,12 @@ class GmailCreator:
             await month_button.click()
             await self._random_delay(1, 2)
             
-            # Wait for month dropdown to open and select the month
+            # Wait for month dropdown to open and select the month (target specific month dropdown)
+            month_name = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][user_profile.birth_month]
             month_option_selectors = [
-                f'li[data-value="{user_profile.birth_month}"][role="option"]',
-                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("{["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][user_profile.birth_month]}")'
+                f'div[data-menu-uid="ucc-0"] li[data-value="{user_profile.birth_month}"][role="option"]',
+                f'div[data-menu-uid="ucc-0"] li[role="option"] span[jsname="K4r5Ff"]:has-text("{month_name}")',
+                f'#month ~ div ul[role="listbox"] li[data-value="{user_profile.birth_month}"]'
             ]
             
             month_selected = False
@@ -518,46 +573,147 @@ class GmailCreator:
             await gender_button.click()
             await self._random_delay(1, 2)
             
-            # Map gender values based on the HTML structure (Female=2, Male=1, Rather not say=3, Custom=4)
+            # Wait for the specific gender dropdown menu to be visible using unique identifier
+            # Give some time for the dropdown to appear after clicking
+            await page.wait_for_timeout(1000)
+            
+            # Try to find the gender dropdown menu by multiple approaches
+            gender_dropdown_found = False
+            for attempt in range(3):
+                try:
+                    # Look for the gender dropdown specifically
+                    gender_dropdown = await page.query_selector('div[data-menu-uid="ucc-1"][jsname="xl07Ob"]')
+                    if gender_dropdown and await gender_dropdown.is_visible():
+                        gender_dropdown_found = True
+                        logger.debug("Gender dropdown found and visible")
+                        break
+                    else:
+                        # Alternative: check if any dropdown with gender options is visible
+                        gender_list = await page.query_selector('ul[aria-label="Gender"][role="listbox"]')
+                        if gender_list and await gender_list.is_visible():
+                            gender_dropdown_found = True  
+                            logger.debug("Gender listbox found and visible")
+                            break
+                except Exception as e:
+                    logger.debug(f"Attempt {attempt + 1} to find gender dropdown failed: {e}")
+                
+                if attempt < 2:  # Don't wait after the last attempt
+                    await page.wait_for_timeout(1000)
+            
+            if not gender_dropdown_found:
+                logger.warning("Gender dropdown not found after clicking button")
+                await page.keyboard.press('Escape')  # Close any open dropdown
+                return
+            
+            # Map gender values based on the actual HTML structure
             gender_mapping = {
-                "female": "2",
-                "male": "1", 
-                "other": "3",
-                "prefer not to say": "3",
-                "rather not say": "3"
+                "female": ("2", "Female"),
+                "male": ("1", "Male"), 
+                "other": ("3", "Rather not say"),
+                "prefer not to say": ("3", "Rather not say"),
+                "rather not say": ("3", "Rather not say"),
+                "custom": ("4", "Custom")
             }
             
-            gender_value = gender_mapping.get(user_profile.gender.lower(), "3")  # Default to "Rather not say"
+            # Get the gender value and display text
+            gender_key = user_profile.gender.lower()
+            gender_value, gender_text = gender_mapping.get(gender_key, ("3", "Rather not say"))  # Default to "Rather not say"
             
-            # Wait for gender dropdown to open and select the gender
+            logger.debug(f"Looking for gender option: {gender_text} (value={gender_value})")
+            
+            # Try multiple selector strategies for finding the gender option, targeting the specific gender dropdown
             gender_option_selectors = [
-                f'li[data-value="{gender_value}"][role="option"]',
-                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("{user_profile.gender.title()}")',
-                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Female")' if user_profile.gender.lower() == "female" else None,
-                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Male")' if user_profile.gender.lower() == "male" else None,
-                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Rather not say")'
+                # Most precise: target the specific gender dropdown by menu-uid
+                f'div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="{gender_value}"]',
+                # Backup: within the gender dropdown container
+                f'div[data-menu-uid="ucc-1"] li[data-value="{gender_value}"][role="option"]',
+                # Text-based match within the gender dropdown
+                f'div[data-menu-uid="ucc-1"] li[role="option"] span[jsname="K4r5Ff"]:has-text("{gender_text}")',
+                # More general approach within gender dropdown
+                f'div[data-menu-uid="ucc-1"] li[role="option"]:has-text("{gender_text}")',
+                # Fallback: use the gender container context
+                f'#gender ~ div ul[role="listbox"] li[data-value="{gender_value}"]'
             ]
             
-            # Remove None values
-            gender_option_selectors = [s for s in gender_option_selectors if s is not None]
-            
             gender_selected = False
-            for selector in gender_option_selectors:
+            selected_option = None
+            
+            for i, selector in enumerate(gender_option_selectors):
                 try:
-                    await page.wait_for_selector(selector, timeout=5000)
-                    option = await page.query_selector(selector)
-                    if option and await option.is_visible():
-                        await option.click()
-                        logger.debug(f"Selected gender with selector: {selector}")
-                        gender_selected = True
+                    logger.debug(f"Trying gender selector {i+1}/{len(gender_option_selectors)}: {selector}")
+                    options = await page.query_selector_all(selector)
+                    logger.debug(f"Found {len(options)} options with this selector")
+                    
+                    for j, option in enumerate(options):
+                        try:
+                            is_visible = await option.is_visible()
+                            logger.debug(f"Option {j+1} visible: {is_visible}")
+                            
+                            if is_visible:
+                                await option.scroll_into_view_if_needed()
+                                await page.wait_for_timeout(500)
+                                await option.click()
+                                logger.info(f"✅ Successfully clicked gender option with selector: {selector}")
+                                selected_option = option
+                                gender_selected = True
+                                break
+                        except Exception as opt_e:
+                            logger.debug(f"Failed to click option {j+1}: {opt_e}")
+                            continue
+                    
+                    if gender_selected:
                         break
-                except:
+                        
+                except Exception as e:
+                    logger.debug(f"Gender selector failed {selector}: {e}")
                     continue
             
             if not gender_selected:
-                logger.warning("Could not select gender from dropdown")
-                # Try to close dropdown by pressing Escape
+                logger.warning("Could not select gender from dropdown, trying fallback")
+                # Fallback: try clicking "Rather not say" from the gender dropdown specifically
+                try:
+                    fallback_option = await page.query_selector('div[data-menu-uid="ucc-1"] li[role="option"][data-value="3"]')
+                    if fallback_option and await fallback_option.is_visible():
+                        await fallback_option.click()
+                        logger.debug("Selected fallback gender option: Rather not say")
+                        gender_selected = True
+                except:
+                    pass
+            
+            if not gender_selected:
+                logger.warning("Could not select any gender option - closing dropdown")
                 await page.keyboard.press('Escape')
+            else:
+                # Wait for dropdown to close after selection
+                await page.wait_for_timeout(1000)
+                
+                # Handle custom gender if selected
+                if gender_value == "4":  # Custom gender selected
+                    try:
+                        logger.debug("Custom gender selected, looking for additional fields")
+                        
+                        # Wait for custom gender input field to appear
+                        custom_input = await page.wait_for_selector('#customGender input[type="text"]', timeout=3000)
+                        if custom_input:
+                            await custom_input.fill(user_profile.gender)
+                            logger.debug(f"Filled custom gender: {user_profile.gender}")
+                        
+                        # Handle pronoun selection if it appears
+                        pronoun_dropdown = await page.query_selector('#genderpronoun div[role="combobox"]')
+                        if pronoun_dropdown and await pronoun_dropdown.is_visible():
+                            await pronoun_dropdown.click()
+                            await page.wait_for_timeout(1000)
+                            
+                            # Select appropriate pronoun (default to "Other" for custom)
+                            pronoun_option = await page.query_selector('li[data-value="3"][role="option"]')  # Other
+                            if pronoun_option and await pronoun_option.is_visible():
+                                await pronoun_option.click()
+                                logger.debug("Selected pronoun: Other")
+                                
+                    except Exception as e:
+                        logger.debug(f"Error handling custom gender fields: {e}")
+                
+                logger.info(f"✅ Gender selected: {gender_text}")
             
             await self._random_delay(1, 2)
             logger.info("✅ Birth date and gender information entered")

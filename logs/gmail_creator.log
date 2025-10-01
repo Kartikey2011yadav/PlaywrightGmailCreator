@@ -619,3 +619,160 @@ Call log:
 2025-10-01 10:36:42 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
 2025-10-01 10:37:14 - src.gmail_creator - ERROR - Gmail creation error: Could not find available username
 2025-10-01 10:37:14 - src.gmail_creator - INFO - Waiting 12 seconds before next account...
+2025-10-01 15:27:08 - gmail_creator - INFO - Logging system initialized
+2025-10-01 15:27:08 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 15:27:08 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 15:27:08 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 15:27:08 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 15:27:08 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: 400, message='Bad Request', url='socks4://203.13.32.47:80'
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 403
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: HTTP 403
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: HTTP 403
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: Server disconnected
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Cannot connect to host 109.236.86.221:15279 ssl:default [Connect call failed ('109.236.86.221', 15279)]
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 15:27:09 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 15:27:10 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 15:27:11 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 15:27:19 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 15:27:19 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 15:27:19 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 15:27:19 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 15:27:19 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 15:27:19 - src.account_manager - INFO - Started batch d5349335-443e-4c56-af83-89813f991f4e for 3 accounts
+2025-10-01 15:27:19 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 15:27:19 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 15:27:19 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 15:27:19 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 15:27:19 - src.gmail_creator - INFO - Creating account for Federico Gentile
+2025-10-01 15:27:20 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 15:27:41 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 15:27:53 - src.gmail_creator - ERROR - Error entering birth date and gender: Locator.wait_for: Error: strict mode violation: locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") resolved to 4 elements:
+    1) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-0" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember$"))
+    2) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc VfPpkd-xl07Ob-XxIAqe-OWXEXe-uxVfW-FNFY6c-uFfGwd VfPpkd-xl07Ob-XxIAqe-OWXEXe-FN…>…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleRather not sayCustom$"))
+    3) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-2" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleOther$"))
+    4) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucj-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka get_by_role("contentinfo").locator("div").filter(has_text="Afrikaansazə").nth(3)
+
+Call log:
+  - waiting for locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") to be visible
+
+2025-10-01 15:27:53 - src.gmail_creator - ERROR - Gmail creation error: Failed to enter birth date and gender: Locator.wait_for: Error: strict mode violation: locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") resolved to 4 elements:
+    1) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-0" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember$"))
+    2) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc VfPpkd-xl07Ob-XxIAqe-OWXEXe-uxVfW-FNFY6c-uFfGwd VfPpkd-xl07Ob-XxIAqe-OWXEXe-FN…>…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleRather not sayCustom$"))
+    3) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-2" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleOther$"))
+    4) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucj-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka get_by_role("contentinfo").locator("div").filter(has_text="Afrikaansazə").nth(3)
+
+Call log:
+  - waiting for locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") to be visible
+
+2025-10-01 15:27:53 - src.gmail_creator - INFO - Waiting 10 seconds before next account...
+2025-10-01 15:28:03 - src.gmail_creator - INFO - Creating account 2/3
+2025-10-01 15:28:03 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 15:28:03 - src.gmail_creator - INFO - Creating account for Samuel Walker
+2025-10-01 15:28:03 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 15:28:28 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 15:28:40 - src.gmail_creator - ERROR - Error entering birth date and gender: Locator.wait_for: Error: strict mode violation: locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") resolved to 4 elements:
+    1) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-0" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember$"))
+    2) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc VfPpkd-xl07Ob-XxIAqe-OWXEXe-uxVfW-FNFY6c-uFfGwd VfPpkd-xl07Ob-XxIAqe-OWXEXe-FN…>…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleRather not sayCustom$"))
+    3) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-2" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleOther$"))
+    4) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucj-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka get_by_role("contentinfo").locator("div").filter(has_text="Afrikaansazə").nth(3)
+
+Call log:
+  - waiting for locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") to be visible
+
+2025-10-01 15:28:40 - src.gmail_creator - ERROR - Gmail creation error: Failed to enter birth date and gender: Locator.wait_for: Error: strict mode violation: locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") resolved to 4 elements:
+    1) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-0" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember$"))
+    2) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob VfPpkd-YPmvEd s8kOBc dmaMHc VfPpkd-xl07Ob-XxIAqe-OWXEXe-uxVfW-FNFY6c-uFfGwd VfPpkd-xl07Ob-XxIAqe-OWXEXe-FN…>…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleRather not sayCustom$"))
+    3) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucc-2" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka locator("div").filter(has_text=re.compile(r"^FemaleMaleOther$"))
+    4) <div jsname="xl07Ob" jscontroller="ywOR5c" data-menu-uid="ucj-1" data-is-hoisted="false" data-stay-in-viewport="false" data-should-flip-corner-horizontally="false" class="VfPpkd-xl07Ob-XxIAqe VfPpkd-xl07Ob-XxIAqe-OWXEXe-tsQazb VfPpkd-xl07Ob  VfPpkd-YPmvEd s8kOBc dmaMHc" jsaction="keydown:I481le;JIbuQc:j697N(rymPhb);XVaHYd:c9v4Fb(rymPhb);Oyo5M:b5fzT(rymPhb);DimkCe:TQSy7b(rymPhb);m0LGSd:fAWgXe(rymPhb);WAiFGd:kVJJuc(rymPhb);">…</div> aka get_by_role("contentinfo").locator("div").filter(has_text="Afrikaansazə").nth(3)
+
+Call log:
+  - waiting for locator(".VfPpkd-xl07Ob[jsname=\"xl07Ob\"]") to be visible
+
+2025-10-01 15:28:40 - src.gmail_creator - INFO - Waiting 19 seconds before next account...
+2025-10-01 15:32:28 - gmail_creator - INFO - Logging system initialized
+2025-10-01 15:32:28 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 15:32:28 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 15:32:28 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 15:32:28 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 15:32:28 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: 400, message='Bad Request', url='socks4://203.30.189.85:80'
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 403
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: HTTP 403
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: HTTP 403
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 15:32:28 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Cannot connect to host 109.236.86.221:15279 ssl:default [Connect call failed ('109.236.86.221', 15279)]
+2025-10-01 15:32:29 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 15:32:39 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 15:32:39 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 15:32:39 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 15:32:39 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 15:32:39 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 15:32:39 - src.account_manager - INFO - Started batch 089db47e-bd03-4852-ba4a-932b80eab6c1 for 3 accounts
+2025-10-01 15:32:39 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 15:32:39 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 15:32:39 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 15:32:39 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 15:32:39 - src.gmail_creator - INFO - Creating account for Paul Petit
+2025-10-01 15:32:40 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 15:32:54 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 15:33:08 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="1"]
+2025-10-01 15:33:09 - src.gmail_creator - INFO - ✅ Gender selected: Male
+2025-10-01 15:33:11 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 15:33:55 - src.gmail_creator - WARNING - Error checking username availability: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']")
+
+2025-10-01 15:34:12 - src.gmail_creator - ERROR - Error creating account 1: Browser.close: Connection closed while reading from the driver
+2025-10-01 15:34:12 - src.gmail_creator - INFO - Creating account 2/3
+2025-10-01 15:34:12 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 15:34:12 - src.gmail_creator - INFO - Creating account for Sylvie Lambert
+2025-10-01 15:34:13 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 15:34:15 - asyncio - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("input[name=\'Username\']")\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[name='Username']")
+
