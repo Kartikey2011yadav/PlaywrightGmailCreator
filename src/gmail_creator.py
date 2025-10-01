@@ -365,145 +365,211 @@ class GmailCreator:
         await self._random_delay(2, 4)
     
     async def _enter_birth_and_gender(self, page: Page, user_profile: UserProfile):
-        """Enter birth date and gender information"""
+        """Enter birth date and gender information based on actual Gmail HTML structure"""
         logger.debug("Entering birth date and gender")
         
-        # Wait for birth date fields with multiple selectors
-        month_element = None
-        month_selectors = [
-            "select[id='month']",
-            "select[aria-label*='Month']",
-            "select[aria-label*='month']",
-            "div[data-value] >> nth=0",
-            "input[placeholder*='Month']",
-            "input[aria-label*='Month']"
-        ]
-        
-        for selector in month_selectors:
-            try:
-                await page.wait_for_selector(selector, timeout=3000)
-                month_element = await page.query_selector(selector)
-                if month_element:
-                    logger.debug(f"Found month element with selector: {selector}")
-                    break
-            except:
-                continue
-        
-        if not month_element:
-            raise GmailCreationError("Could not find birth month field")
-        
-        # Handle month selection
         try:
-            # Try select dropdown first
-            if await month_element.get_attribute("tagName") == "SELECT":
-                await page.select_option(month_element, value=str(user_profile.birth_month))
-            else:
-                # Try input field
-                month_names = ["", "January", "February", "March", "April", "May", "June",
-                              "July", "August", "September", "October", "November", "December"]
-                await month_element.click()
-                await self._random_delay(0.5, 1)
-                await page.keyboard.type(month_names[user_profile.birth_month])
+            # Wait for the birth date section to be visible
+            await page.wait_for_selector('.HnFhQ', timeout=10000)
+            await self._random_delay(1, 2)
+            
+            # === MONTH SELECTION ===
+            logger.debug(f"Selecting month: {user_profile.birth_month}")
+            
+            # Find month dropdown using the exact HTML structure
+            month_button_selectors = [
+                '#month div[jsname="oYxtQd"][role="combobox"]',
+                'div[id="month"] .VfPpkd-TkwUic[role="combobox"]',
+                'div[jsname="byRamd"] div[role="combobox"]'
+            ]
+            
+            month_button = None
+            for selector in month_button_selectors:
+                try:
+                    button = await page.query_selector(selector)
+                    if button and await button.is_visible():
+                        month_button = button
+                        logger.debug(f"Found month button with selector: {selector}")
+                        break
+                except:
+                    continue
+            
+            if not month_button:
+                raise GmailCreationError("Could not find month dropdown button")
+            
+            # Click to open month dropdown
+            await month_button.scroll_into_view_if_needed()
+            await month_button.click()
+            await self._random_delay(1, 2)
+            
+            # Wait for month dropdown to open and select the month
+            month_option_selectors = [
+                f'li[data-value="{user_profile.birth_month}"][role="option"]',
+                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("{["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][user_profile.birth_month]}")'
+            ]
+            
+            month_selected = False
+            for selector in month_option_selectors:
+                try:
+                    await page.wait_for_selector(selector, timeout=5000)
+                    option = await page.query_selector(selector)
+                    if option and await option.is_visible():
+                        await option.click()
+                        logger.debug(f"Selected month with selector: {selector}")
+                        month_selected = True
+                        break
+                except:
+                    continue
+            
+            if not month_selected:
+                logger.warning("Could not select month from dropdown")
+            
+            await self._random_delay(0.5, 1)
+            
+            # === DAY SELECTION ===
+            logger.debug(f"Entering day: {user_profile.birth_day}")
+            
+            day_selectors = [
+                'input[id="day"]',
+                'input[name="day"]', 
+                'input[aria-label="Day"]',
+                'input[type="tel"][maxlength="2"]'
+            ]
+            
+            day_filled = False
+            for selector in day_selectors:
+                try:
+                    day_input = await page.query_selector(selector)
+                    if day_input and await day_input.is_visible():
+                        await day_input.scroll_into_view_if_needed()
+                        await day_input.click()
+                        await day_input.fill("")  # Clear any existing value
+                        await day_input.type(str(user_profile.birth_day))
+                        logger.debug(f"Filled day with selector: {selector}")
+                        day_filled = True
+                        break
+                except Exception as e:
+                    logger.debug(f"Error with day selector {selector}: {e}")
+                    continue
+            
+            if not day_filled:
+                logger.warning("Could not fill birth day field")
+            
+            await self._random_delay(0.5, 1)
+            
+            # === YEAR SELECTION ===
+            logger.debug(f"Entering year: {user_profile.birth_year}")
+            
+            year_selectors = [
+                'input[id="year"]',
+                'input[name="year"]',
+                'input[aria-label="Year"]', 
+                'input[type="tel"][maxlength="4"]'
+            ]
+            
+            year_filled = False
+            for selector in year_selectors:
+                try:
+                    year_input = await page.query_selector(selector)
+                    if year_input and await year_input.is_visible():
+                        await year_input.scroll_into_view_if_needed()
+                        await year_input.click()
+                        await year_input.fill("")  # Clear any existing value
+                        await year_input.type(str(user_profile.birth_year))
+                        logger.debug(f"Filled year with selector: {selector}")
+                        year_filled = True
+                        break
+                except Exception as e:
+                    logger.debug(f"Error with year selector {selector}: {e}")
+                    continue
+            
+            if not year_filled:
+                logger.warning("Could not fill birth year field")
+            
+            await self._random_delay(0.5, 1)
+            
+            # === GENDER SELECTION ===
+            logger.debug(f"Selecting gender: {user_profile.gender}")
+            
+            # Find gender dropdown using the exact HTML structure  
+            gender_button_selectors = [
+                '#gender div[jsname="oYxtQd"][role="combobox"]',
+                'div[id="gender"] .VfPpkd-TkwUic[role="combobox"]',
+                'div[jsname="ZU2VHd"] div[role="combobox"]'
+            ]
+            
+            gender_button = None
+            for selector in gender_button_selectors:
+                try:
+                    button = await page.query_selector(selector)
+                    if button and await button.is_visible():
+                        gender_button = button
+                        logger.debug(f"Found gender button with selector: {selector}")
+                        break
+                except:
+                    continue
+            
+            if not gender_button:
+                logger.warning("Could not find gender dropdown button")
+                return
+            
+            # Click to open gender dropdown
+            await gender_button.scroll_into_view_if_needed()
+            await gender_button.click()
+            await self._random_delay(1, 2)
+            
+            # Map gender values based on the HTML structure (Female=2, Male=1, Rather not say=3, Custom=4)
+            gender_mapping = {
+                "female": "2",
+                "male": "1", 
+                "other": "3",
+                "prefer not to say": "3",
+                "rather not say": "3"
+            }
+            
+            gender_value = gender_mapping.get(user_profile.gender.lower(), "3")  # Default to "Rather not say"
+            
+            # Wait for gender dropdown to open and select the gender
+            gender_option_selectors = [
+                f'li[data-value="{gender_value}"][role="option"]',
+                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("{user_profile.gender.title()}")',
+                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Female")' if user_profile.gender.lower() == "female" else None,
+                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Male")' if user_profile.gender.lower() == "male" else None,
+                f'li[role="option"] span[jsname="K4r5Ff"]:has-text("Rather not say")'
+            ]
+            
+            # Remove None values
+            gender_option_selectors = [s for s in gender_option_selectors if s is not None]
+            
+            gender_selected = False
+            for selector in gender_option_selectors:
+                try:
+                    await page.wait_for_selector(selector, timeout=5000)
+                    option = await page.query_selector(selector)
+                    if option and await option.is_visible():
+                        await option.click()
+                        logger.debug(f"Selected gender with selector: {selector}")
+                        gender_selected = True
+                        break
+                except:
+                    continue
+            
+            if not gender_selected:
+                logger.warning("Could not select gender from dropdown")
+                # Try to close dropdown by pressing Escape
+                await page.keyboard.press('Escape')
+            
+            await self._random_delay(1, 2)
+            logger.info("✅ Birth date and gender information entered")
+            
         except Exception as e:
-            logger.warning(f"Error setting month: {e}")
-            # Try typing the month number
-            await month_element.fill(str(user_profile.birth_month))
-        
-        await self._random_delay(0.3, 0.7)
-        
-        # Enter birth day
-        day_selectors = [
-            "input[id='day']",
-            "input[aria-label*='Day']",
-            "input[placeholder*='Day']"
-        ]
-        
-        day_element = None
-        for selector in day_selectors:
+            logger.error(f"Error entering birth date and gender: {str(e)}")
+            # Try to close any open dropdowns
             try:
-                day_element = await page.query_selector(selector)
-                if day_element:
-                    await day_element.fill(str(user_profile.birth_day))
-                    logger.debug(f"Filled day with selector: {selector}")
-                    break
+                await page.keyboard.press('Escape')
             except:
-                continue
-        
-        if not day_element:
-            logger.warning("Could not find birth day field")
-        
-        await self._random_delay(0.3, 0.7)
-        
-        # Enter birth year
-        year_selectors = [
-            "input[id='year']",
-            "input[aria-label*='Year']",
-            "input[placeholder*='Year']"
-        ]
-        
-        year_element = None
-        for selector in year_selectors:
-            try:
-                year_element = await page.query_selector(selector)
-                if year_element:
-                    await year_element.fill(str(user_profile.birth_year))
-                    logger.debug(f"Filled year with selector: {selector}")
-                    break
-            except:
-                continue
-        
-        if not year_element:
-            logger.warning("Could not find birth year field")
-        
-        await self._random_delay(0.3, 0.7)
-        
-        # Select gender
-        gender_selectors = [
-            "select[id='gender']",
-            "select[aria-label*='Gender']",
-            "div[data-value] >> nth=1"
-        ]
-        
-        gender_element = None
-        for selector in gender_selectors:
-            try:
-                gender_element = await page.query_selector(selector)
-                if gender_element:
-                    logger.debug(f"Found gender element with selector: {selector}")
-                    break
-            except:
-                continue
-        
-        if gender_element:
-            try:
-                if await gender_element.get_attribute("tagName") == "SELECT":
-                    gender_value = "1" if user_profile.gender.lower() == "male" else "2" if user_profile.gender.lower() == "female" else "3"
-                    await page.select_option(gender_element, value=gender_value)
-                else:
-                    # Handle custom dropdown
-                    await gender_element.click()
-                    await self._random_delay(0.5, 1)
-                    
-                    gender_options = [
-                        f"div:has-text('{user_profile.gender.title()}')",
-                        f"li:has-text('{user_profile.gender.title()}')",
-                        f"option:has-text('{user_profile.gender.title()}')"
-                    ]
-                    
-                    for option_selector in gender_options:
-                        try:
-                            option = await page.query_selector(option_selector)
-                            if option:
-                                await option.click()
-                                break
-                        except:
-                            continue
-            except Exception as e:
-                logger.warning(f"Error setting gender: {e}")
-        else:
-            logger.warning("Could not find gender field")
-        
-        await self._random_delay(0.5, 1)
+                pass
+            raise GmailCreationError(f"Failed to enter birth date and gender: {str(e)}")
         
         # Click next
         await page.click(self.selectors["next_button"])

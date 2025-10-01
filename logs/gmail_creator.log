@@ -504,3 +504,118 @@ Call log:
 2025-10-01 09:02:50 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
 2025-10-01 09:03:12 - src.gmail_creator - ERROR - Gmail creation error: Could not find birth month field
 2025-10-01 09:03:12 - src.gmail_creator - INFO - Waiting 14 seconds before next account...
+2025-10-01 09:32:03 - gmail_creator - INFO - Logging system initialized
+2025-10-01 09:32:03 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 09:32:03 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 09:32:03 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 09:32:03 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 09:32:03 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 403
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: 400, message='Bad Request', url='socks4://203.13.32.47:80'
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: HTTP 403
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: HTTP 403
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: Server disconnected
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 09:32:03 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 09:32:04 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 09:32:04 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Server disconnected
+2025-10-01 09:32:13 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 09:32:13 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 09:32:13 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 09:32:13 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 09:32:13 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 09:32:13 - src.account_manager - INFO - Started batch 2cb1a3d6-8270-44e5-bbbf-552d725c9c3b for 3 accounts
+2025-10-01 09:32:13 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 09:32:13 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 09:32:13 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 09:32:13 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 09:32:13 - src.gmail_creator - INFO - Creating account for Martin Klein
+2025-10-01 09:32:14 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 09:33:22 - src.gmail_creator - WARNING - Could not select gender from dropdown
+2025-10-01 09:33:24 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 09:34:08 - src.gmail_creator - WARNING - Error checking username availability: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']")
+
+2025-10-01 09:34:38 - src.gmail_creator - WARNING - Error checking username availability: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']")
+
+2025-10-01 09:35:08 - src.gmail_creator - WARNING - Error checking username availability: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']")
+
+2025-10-01 09:35:08 - src.gmail_creator - ERROR - Gmail creation error: Could not find available username
+2025-10-01 09:35:08 - src.gmail_creator - INFO - Waiting 14 seconds before next account...
+2025-10-01 10:35:37 - gmail_creator - INFO - Logging system initialized
+2025-10-01 10:35:37 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 10:35:37 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 10:35:37 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 10:35:37 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 10:35:37 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: 400, message='Bad Request', url='socks4://203.13.32.47:80'
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: 400, message='Bad Request', url='socks5://203.23.104.167:80'
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: 400, message='Bad Request', url='socks4://203.30.190.30:80'
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: HTTP 403
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 10:35:37 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 10:35:38 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 10:35:38 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 10:35:39 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Server disconnected
+2025-10-01 10:35:47 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 10:35:47 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 10:35:47 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 10:35:47 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 10:35:47 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 10:35:47 - src.account_manager - INFO - Started batch d8ea6e92-4cfa-41e4-88cc-c76c852bee8b for 3 accounts
+2025-10-01 10:35:47 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 10:35:47 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 10:35:47 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 10:35:47 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 10:35:47 - src.gmail_creator - INFO - Creating account for Francisca García
+2025-10-01 10:35:48 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 10:36:09 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 10:36:40 - src.gmail_creator - WARNING - Could not select gender from dropdown
+2025-10-01 10:36:42 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 10:37:14 - src.gmail_creator - ERROR - Gmail creation error: Could not find available username
+2025-10-01 10:37:14 - src.gmail_creator - INFO - Waiting 12 seconds before next account...
