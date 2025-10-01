@@ -776,3 +776,164 @@ playwright._impl._errors.TargetClosedError: Target page, context or browser has 
 Call log:
   - waiting for locator("input[name='Username']")
 
+2025-10-01 17:28:47 - gmail_creator - INFO - Logging system initialized
+2025-10-01 17:28:47 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 17:28:47 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 17:28:47 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 17:28:47 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 17:28:47 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: 400, message='Bad Request', url='socks4://203.30.189.85:80'
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: HTTP 409
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: HTTP 409
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 409
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 17:28:47 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: Server disconnected
+2025-10-01 17:28:48 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 17:28:48 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 17:28:57 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: 
+2025-10-01 17:28:57 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 17:28:57 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 17:28:57 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 17:28:57 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 17:28:57 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 17:28:57 - src.account_manager - INFO - Started batch 47f80eb5-ba49-49d1-9fef-c648d6fa8a5a for 3 accounts
+2025-10-01 17:28:57 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 17:28:57 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 17:28:57 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 17:28:57 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 17:28:57 - src.gmail_creator - INFO - Creating account for Stefanie Schulz
+2025-10-01 17:28:58 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 17:29:24 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 17:29:39 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="2"]
+2025-10-01 17:29:40 - src.gmail_creator - INFO - ✅ Gender selected: Female
+2025-10-01 17:29:41 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 17:29:57 - src.gmail_creator - INFO - ✅ Username 'stefanieschulz713' is available - moved to password page
+2025-10-01 17:30:18 - src.gmail_creator - ERROR - Error agreeing to terms: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('I agree'), button:has-text('Accept')") to be visible
+
+2025-10-01 17:30:18 - src.gmail_creator - ERROR - Gmail creation error: Could not agree to terms
+2025-10-01 17:30:18 - src.gmail_creator - INFO - Waiting 16 seconds before next account...
+2025-10-01 17:30:34 - src.gmail_creator - INFO - Creating account 2/3
+2025-10-01 17:30:34 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 17:30:34 - src.gmail_creator - INFO - Creating account for George Hall
+2025-10-01 17:30:34 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 17:30:54 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 17:31:07 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="1"]
+2025-10-01 17:31:08 - src.gmail_creator - INFO - ✅ Gender selected: Male
+2025-10-01 17:31:09 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 17:31:24 - src.gmail_creator - INFO - ✅ Username 'geo.hal161738' is available - moved to password page
+2025-10-01 17:31:42 - src.gmail_creator - ERROR - Error agreeing to terms: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('I agree'), button:has-text('Accept')") to be visible
+
+2025-10-01 17:31:42 - src.gmail_creator - ERROR - Gmail creation error: Could not agree to terms
+2025-10-01 17:31:42 - src.gmail_creator - INFO - Waiting 16 seconds before next account...
+2025-10-01 17:31:58 - src.gmail_creator - INFO - Creating account 3/3
+2025-10-01 17:31:58 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 17:31:58 - src.gmail_creator - INFO - Creating account for Jorge López
+2025-10-01 17:31:59 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 17:32:25 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="1"]
+2025-10-01 17:32:26 - src.gmail_creator - INFO - ✅ Gender selected: Male
+2025-10-01 17:32:27 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 17:33:18 - src.gmail_creator - INFO - ✅ Username 'jorge.lopez.user59' is available - moved to password page
+2025-10-01 17:33:38 - src.gmail_creator - ERROR - Error agreeing to terms: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('I agree'), button:has-text('Accept')") to be visible
+
+2025-10-01 17:33:38 - src.gmail_creator - ERROR - Gmail creation error: Could not agree to terms
+2025-10-01 17:33:38 - src.gmail_creator - INFO - Final report saved to: /run/media/darth-kartikey/Drive/Gmail/AutomateGmail/PlaywrightGmailCreator/output/creation_report_20251001_173338.json
+2025-10-01 17:33:38 - src.gmail_creator - INFO - 📊 Creation Summary: 0/3 successful
+2025-10-01 17:33:38 - src.account_manager - INFO - Finished batch 47f80eb5-ba49-49d1-9fef-c648d6fa8a5a: 0 successful, 3 failed
+2025-10-01 17:33:38 - gmail_creator - INFO - Batch creation completed: 0/3 successful
+2025-10-01 19:20:46 - gmail_creator - INFO - Logging system initialized
+2025-10-01 19:20:46 - gmail_creator - INFO - Project directories created/verified
+2025-10-01 19:20:46 - src.account_manager - INFO - Database initialized successfully
+2025-10-01 19:20:46 - src.account_manager - INFO - Loaded 0 accounts from database
+2025-10-01 19:20:46 - gmail_creator - INFO - Gmail Creator Application initialized
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 85.25.177.53:58851
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 203.13.32.47:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 203.23.104.167:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 34.110.150.54:3128
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 51.15.187.125:5836
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 35.244.232.197:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 34.117.70.177:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 203.30.189.85:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 203.30.190.30:80
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 163.172.48.119:15016
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 51.159.221.176:17676
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 141.94.174.6:37876
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 178.132.5.26:16937
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 77.93.220.68:61556
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Added proxy: 109.236.86.221:15279
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Loaded 15 proxies from config/proxies.json
+2025-10-01 19:20:46 - src.proxy_manager - INFO - Testing all proxies...
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 203.30.190.30:80 failed: 400, message='Bad Request', url='socks4://203.30.190.30:80'
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 203.30.189.85:80 failed: 400, message='Bad Request', url='socks4://203.30.189.85:80'
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 203.13.32.47:80 failed: HTTP 409
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 203.23.104.167:80 failed: HTTP 409
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 34.117.70.177:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 35.244.232.197:80 failed: [Errno 104] Connection reset by peer
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 85.25.177.53:58851 failed: Cannot connect to host 85.25.177.53:58851 ssl:default [Connect call failed ('85.25.177.53', 58851)]
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 51.159.221.176:17676 failed: Cannot connect to host 51.159.221.176:17676 ssl:default [Connect call failed ('51.159.221.176', 17676)]
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 178.132.5.26:16937 failed: Cannot connect to host 178.132.5.26:16937 ssl:default [Connect call failed ('178.132.5.26', 16937)]
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 109.236.86.221:15279 failed: Cannot connect to host 109.236.86.221:15279 ssl:default [Connect call failed ('109.236.86.221', 15279)]
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 77.93.220.68:61556 failed: Cannot connect to host 77.93.220.68:61556 ssl:default [Connect call failed ('77.93.220.68', 61556)]
+2025-10-01 19:20:47 - src.proxy_manager - WARNING - Proxy 163.172.48.119:15016 failed: [Errno 104] Connection reset by peer
+2025-10-01 19:20:50 - src.proxy_manager - WARNING - Proxy 141.94.174.6:37876 failed: Cannot connect to host 141.94.174.6:37876 ssl:default [Connect call failed ('141.94.174.6', 37876)]
+2025-10-01 19:20:57 - src.proxy_manager - WARNING - Proxy 51.15.187.125:5836 failed: 
+2025-10-01 19:20:57 - src.proxy_manager - WARNING - Proxy 34.110.150.54:3128 failed: 
+2025-10-01 19:20:57 - src.proxy_manager - INFO - Proxy testing complete. 0/15 proxies are active
+2025-10-01 19:20:57 - src.gmail_creator - INFO - Proxy manager initialized with 0 active proxies
+2025-10-01 19:20:57 - src.gmail_creator - INFO - Gmail Creator initialized successfully
+2025-10-01 19:20:57 - src.account_manager - INFO - Started batch 3fb874b5-6164-4624-ab46-47beb0d1addb for 3 accounts
+2025-10-01 19:20:57 - gmail_creator - INFO - Starting creation of 3 Gmail accounts
+2025-10-01 19:20:57 - src.gmail_creator - INFO - Starting bulk account creation: 3 accounts
+2025-10-01 19:20:57 - src.gmail_creator - INFO - Creating account 1/3
+2025-10-01 19:20:57 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 19:20:57 - src.gmail_creator - INFO - Creating account for Silvia Navarro
+2025-10-01 19:20:58 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 19:21:26 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="2"]
+2025-10-01 19:21:27 - src.gmail_creator - INFO - ✅ Gender selected: Female
+2025-10-01 19:21:29 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 19:21:43 - src.gmail_creator - ERROR - Timeout during account creation: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("input[name='Username']") to be visible
+    25 × locator resolved to hidden <input value="" dir="ltr" type="text" tabindex="0" jsname="YPqjbf" name="Username" autocomplete="off" spellcheck="false" class="whsOnd zHQkBf" aria-disabled="false" autocapitalize="none" data-initial-value="" aria-describedby="c23" data-initial-dir="ltr" aria-label="Create a Gmail address"/>
+
+2025-10-01 19:21:43 - src.gmail_creator - INFO - Waiting 20 seconds before next account...
+2025-10-01 19:22:03 - src.gmail_creator - INFO - Creating account 2/3
+2025-10-01 19:22:03 - src.proxy_manager - WARNING - No active proxies available
+2025-10-01 19:22:03 - src.gmail_creator - INFO - Creating account for Agnès Richard
+2025-10-01 19:22:03 - src.gmail_creator - WARNING - Stealth plugin requested but playwright_stealth is not available
+2025-10-01 19:22:24 - src.gmail_creator - INFO - ✅ Language successfully set to English (United States)
+2025-10-01 19:22:40 - src.gmail_creator - INFO - ✅ Successfully clicked gender option with selector: div[data-menu-uid="ucc-1"] ul[role="listbox"][aria-label="Gender"] li[data-value="2"]
+2025-10-01 19:22:41 - src.gmail_creator - INFO - ✅ Gender selected: Female
+2025-10-01 19:22:42 - src.gmail_creator - INFO - ✅ Birth date and gender information entered
+2025-10-01 19:22:57 - src.gmail_creator - INFO - ✅ Username 'agnesrichard15264' is available - moved to password page
+2025-10-01 19:23:18 - src.gmail_creator - ERROR - Error agreeing to terms: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('I agree'), button:has-text('Accept')") to be visible
+
+2025-10-01 19:23:18 - src.gmail_creator - ERROR - Gmail creation error: Could not agree to terms
+2025-10-01 19:23:18 - src.gmail_creator - INFO - Waiting 15 seconds before next account...

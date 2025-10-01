@@ -7,17 +7,17 @@
   "accounts": [],
   "failures": [
     {
-      "error": "Gmail creation error: Could not find birth month field",
+      "error": "Gmail creation error: Could not agree to terms",
       "status": "creation_error"
     },
     {
-      "error": "Timeout during account creation: Page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Next')\")\n",
-      "status": "timeout"
+      "error": "Gmail creation error: Could not agree to terms",
+      "status": "creation_error"
     },
     {
-      "error": "Gmail creation error: Could not find birth month field",
+      "error": "Gmail creation error: Could not agree to terms",
       "status": "creation_error"
     }
   ],
-  "timestamp": "2025-10-01T08:46:30.856635"
+  "timestamp": "2025-10-01T17:33:38.920257"
 }

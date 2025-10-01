@@ -308,6 +308,19 @@ class GmailCreator:
             try:
                 logger.debug(f"Trying username: {username} (attempt {attempts + 1})")
                 
+                # Check if we're already on the password page (username was accepted)
+                password_field = await page.query_selector(self.selectors["password"])
+                if password_field:
+                    logger.info(f"✅ Username '{username}' was accepted - already on password page")
+                    break
+                
+                # Check if username field is still available (we're still on username page)
+                username_field = await page.query_selector(self.selectors["username"])
+                if not username_field:
+                    # We might have moved to the next page already
+                    logger.info(f"✅ Username '{username}' appears to be accepted - moved to next page")
+                    break
+                
                 # Clear and enter username
                 await page.fill(self.selectors["username"], "")
                 await self._random_delay(0.3, 0.7)
@@ -317,28 +330,75 @@ class GmailCreator:
                 # Check availability
                 await page.click(self.selectors["next_button"])
                 
-                # Wait for response
+                # Wait for response - check multiple indicators
                 await page.wait_for_timeout(3000)
                 
-                # Check if username is taken
-                username_taken = await page.query_selector(self.selectors["username_taken"])
-                if not username_taken:
-                    logger.info(f"✅ Username '{username}' is available")
+                # First priority: Check if we moved to password page (success)
+                password_field_after = await page.query_selector(self.selectors["password"])
+                if password_field_after:
+                    logger.info(f"✅ Username '{username}' is available - moved to password page")
                     break
-                else:
+                
+                # Second priority: Check if username is taken
+                username_taken = await page.query_selector(self.selectors["username_taken"])
+                if username_taken:
                     # Generate new Gmail-compliant username variation
                     attempts += 1
                     username = self._generate_username_variation(username_base, attempts)
                     logger.debug(f"Username taken, trying: {username}")
+                    continue
+                
+                # Third priority: Check if we're still on username page with field available
+                username_field_after = await page.query_selector(self.selectors["username"])
+                if not username_field_after:
+                    # Username field disappeared, likely moved to next page
+                    logger.info(f"✅ Username '{username}' appears to be accepted")
+                    break
+                
+                # If we get here, something unexpected happened but no clear error
+                # Try to detect current page state
+                current_url = page.url
+                if "password" in current_url.lower() or "passwd" in current_url.lower():
+                    logger.info(f"✅ Username '{username}' accepted - detected password page by URL")
+                    break
+                
+                # Still on same page with no clear error - might be accepted
+                logger.debug(f"Username '{username}' - no clear error detected, assuming accepted")
+                break
                     
             except Exception as e:
                 logger.warning(f"Error checking username availability: {e}")
+                
+                # Check if we're on password page despite the error
+                try:
+                    password_field = await page.query_selector(self.selectors["password"])
+                    if password_field:
+                        logger.info(f"✅ Username '{username}' was accepted despite error - on password page")
+                        break
+                except:
+                    pass
+                
                 attempts += 1
                 if attempts < max_attempts:
                     username = self._generate_username_variation(username_base, attempts)
         
         if attempts >= max_attempts:
-            raise GmailCreationError("Could not find available username")
+            # Final check - maybe we're actually on the password page
+            try:
+                password_field = await page.query_selector(self.selectors["password"])
+                if password_field:
+                    logger.info(f"✅ Username '{username}' was ultimately accepted - found password field")
+                else:
+                    raise GmailCreationError("Could not find available username after maximum attempts")
+            except:
+                raise GmailCreationError("Could not find available username")
+        
+        # Ensure we're on the right page before proceeding
+        try:
+            await page.wait_for_selector(self.selectors["password"], timeout=5000)
+            logger.debug("Confirmed we're on the password page")
+        except:
+            logger.warning("Password field not found after username selection, but continuing...")
         
         await page.wait_for_load_state("networkidle")
         await self._random_delay(2, 4)
@@ -985,6 +1045,41 @@ class GmailCreator:
         """Add random delay to mimic human behavior"""
         delay = random.uniform(min_seconds, max_seconds)
         await asyncio.sleep(delay)
+    
+    async def _detect_current_page_state(self, page: Page) -> str:
+        """Detect what page/step we're currently on"""
+        try:
+            # Check for various page indicators
+            if await page.query_selector(self.selectors["first_name"]):
+                return "name_entry"
+            elif await page.query_selector(self.selectors["username"]):
+                return "username_entry"  
+            elif await page.query_selector(self.selectors["password"]):
+                return "password_entry"
+            elif await page.query_selector('.HnFhQ'):  # Birth date section
+                return "birth_date_entry"
+            elif await page.query_selector(self.selectors["phone_required"]):
+                return "phone_verification"
+            elif await page.query_selector(self.selectors["recovery_email"]):
+                return "recovery_email"
+            elif await page.query_selector(self.selectors["agree_button"]):
+                return "terms_agreement"
+            else:
+                # Check URL for hints
+                url = page.url.lower()
+                if "password" in url or "passwd" in url:
+                    return "password_entry"
+                elif "phone" in url:
+                    return "phone_verification"
+                elif "recovery" in url:
+                    return "recovery_email"
+                elif "signup" in url:
+                    return "signup_in_progress"
+                else:
+                    return "unknown"
+        except Exception as e:
+            logger.debug(f"Error detecting page state: {e}")
+            return "error"
     
     async def create_bulk_accounts(self, count: int) -> List[Dict[str, Any]]:
         """Create multiple Gmail accounts"""
