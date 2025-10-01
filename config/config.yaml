@@ -20,7 +20,8 @@ proxy:
   auto_fetch_free: false
   proxy_file: "config/proxies.json"
   rotation_method: "random"
-  preferred_countries: ["US", "FR", "CY", "BZ", "NL", "CZ"]
+  # preferred_countries: ["US", "FR", "CY", "BZ", "NL", "CZ"]
+  preferred_countries: ["US",]
   health_check_interval: 300
   max_failures: 3
   timeout: 10

@@ -7,17 +7,17 @@
   "accounts": [],
   "failures": [
     {
-      "error": "Timeout during account creation: Page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Next')\")\n",
-      "status": "timeout"
-    },
-    {
-      "error": "Timeout during account creation: Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"input[name='Username']\") to be visible\n",
-      "status": "timeout"
+      "error": "Gmail creation error: Could not find birth month field",
+      "status": "creation_error"
     },
     {
       "error": "Timeout during account creation: Page.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Next')\")\n",
       "status": "timeout"
+    },
+    {
+      "error": "Gmail creation error: Could not find birth month field",
+      "status": "creation_error"
     }
   ],
-  "timestamp": "2025-09-30T16:58:42.124838"
+  "timestamp": "2025-10-01T08:46:30.856635"
 }

@@ -1,10 +1,8 @@
 {
-  "batch_id": "c58f6a6b-8ef8-4899-994d-6b6ed30dcaa6",
-  "start_time": "2025-09-30T16:56:08.831292",
+  "batch_id": "f1346d6b-d0e2-4949-b322-25a3ef1fe22f",
+  "start_time": "2025-10-01T09:02:25.828358",
   "total_accounts": 3,
   "completed_accounts": 0,
-  "failed_accounts": 3,
-  "status": "completed",
-  "last_updated": "2025-09-30T16:58:42.114199",
-  "end_time": "2025-09-30T16:58:42.123409"
+  "failed_accounts": 0,
+  "status": "running"
 }

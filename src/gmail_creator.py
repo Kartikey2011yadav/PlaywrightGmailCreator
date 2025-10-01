@@ -81,18 +81,20 @@ class GmailCreator:
             "next_button": "button:has-text('Next')",
             "create_account_button": "span:has-text('Create account')",
             "personal_use": "span:has-text('For personal use')",
-            "birth_month": "select[id='month']",
-            "birth_day": "input[id='day']",
-            "birth_year": "input[id='year']",
-            "gender": "select[id='gender']",
-            "phone_skip": "span:has-text('Skip')",
-            "agree_button": "button:has-text('I agree')",
-            "recovery_email": "input[name='recovery']",
-            "create_custom_email": "span:has-text('Create your own Gmail address')",
+            "birth_month": "select[id='month'], select[aria-label*='Month'], div[data-value] >> nth=0",
+            "birth_day": "input[id='day'], input[aria-label*='Day'], input[placeholder*='Day']",
+            "birth_year": "input[id='year'], input[aria-label*='Year'], input[placeholder*='Year']",
+            "gender": "select[id='gender'], select[aria-label*='Gender'], div[data-value] >> nth=1",
+            "phone_skip": "span:has-text('Skip'), button:has-text('Skip')",
+            "agree_button": "button:has-text('I agree'), button:has-text('Accept')",
+            "recovery_email": "input[name='recovery'], input[type='email']:not([name='Username'])",
+            "create_custom_email": "span:has-text('Create your own Gmail address'), button:has-text('Create your own Gmail address')",
             "username_available": ".o6cuMc",
-            "username_taken": ".LXRPh",
+            "username_taken": ".LXRPh, .dEOOab",
             "captcha_frame": "iframe[title*='recaptcha']",
-            "phone_required": "input[type='tel']"
+            "phone_required": "input[type='tel'], input[placeholder*='phone']",
+            "language_dropdown": "select[aria-label*='Language'], button[aria-label*='Language'], div[role='combobox'], ul[aria-label='Change language']",
+            "language_english": "li[data-value='en-US'], option[value='en-US'], span:has-text('English (United States)')"
         }
     
     async def initialize(self):
@@ -185,17 +187,21 @@ class GmailCreator:
             await page.wait_for_load_state("networkidle")
             await self._random_delay(2, 5)
             
+            # Step 0: Set language to English (United States)
+            await self._set_language_to_english(page)
+            
             # Step 1: Enter name information
             await self._enter_name_info(page, user_profile)
             
-            # Step 2: Choose username
-            username = await self._choose_username(page, user_profile)
-            
-            # Step 3: Set password
-            await self._set_password(page, user_profile)
-            
-            # Step 4: Enter birth date and gender
+            # Step 2: Enter birth date and gender
             await self._enter_birth_and_gender(page, user_profile)
+
+            # Step 3: Choose username
+            username = await self._choose_username(page, user_profile)
+
+            # Step 4: Set password
+            await self._set_password(page, user_profile)
+        
             
             # Step 5: Handle phone verification (skip if possible)
             phone_required = await self._handle_phone_verification(page)
@@ -362,24 +368,141 @@ class GmailCreator:
         """Enter birth date and gender information"""
         logger.debug("Entering birth date and gender")
         
-        # Wait for birth date fields
-        await page.wait_for_selector(self.selectors["birth_month"], timeout=10000)
+        # Wait for birth date fields with multiple selectors
+        month_element = None
+        month_selectors = [
+            "select[id='month']",
+            "select[aria-label*='Month']",
+            "select[aria-label*='month']",
+            "div[data-value] >> nth=0",
+            "input[placeholder*='Month']",
+            "input[aria-label*='Month']"
+        ]
         
-        # Select birth month
-        await page.select_option(self.selectors["birth_month"], value=str(user_profile.birth_month))
+        for selector in month_selectors:
+            try:
+                await page.wait_for_selector(selector, timeout=3000)
+                month_element = await page.query_selector(selector)
+                if month_element:
+                    logger.debug(f"Found month element with selector: {selector}")
+                    break
+            except:
+                continue
+        
+        if not month_element:
+            raise GmailCreationError("Could not find birth month field")
+        
+        # Handle month selection
+        try:
+            # Try select dropdown first
+            if await month_element.get_attribute("tagName") == "SELECT":
+                await page.select_option(month_element, value=str(user_profile.birth_month))
+            else:
+                # Try input field
+                month_names = ["", "January", "February", "March", "April", "May", "June",
+                              "July", "August", "September", "October", "November", "December"]
+                await month_element.click()
+                await self._random_delay(0.5, 1)
+                await page.keyboard.type(month_names[user_profile.birth_month])
+        except Exception as e:
+            logger.warning(f"Error setting month: {e}")
+            # Try typing the month number
+            await month_element.fill(str(user_profile.birth_month))
+        
         await self._random_delay(0.3, 0.7)
         
         # Enter birth day
-        await page.fill(self.selectors["birth_day"], str(user_profile.birth_day))
+        day_selectors = [
+            "input[id='day']",
+            "input[aria-label*='Day']",
+            "input[placeholder*='Day']"
+        ]
+        
+        day_element = None
+        for selector in day_selectors:
+            try:
+                day_element = await page.query_selector(selector)
+                if day_element:
+                    await day_element.fill(str(user_profile.birth_day))
+                    logger.debug(f"Filled day with selector: {selector}")
+                    break
+            except:
+                continue
+        
+        if not day_element:
+            logger.warning("Could not find birth day field")
+        
         await self._random_delay(0.3, 0.7)
         
         # Enter birth year
-        await page.fill(self.selectors["birth_year"], str(user_profile.birth_year))
+        year_selectors = [
+            "input[id='year']",
+            "input[aria-label*='Year']",
+            "input[placeholder*='Year']"
+        ]
+        
+        year_element = None
+        for selector in year_selectors:
+            try:
+                year_element = await page.query_selector(selector)
+                if year_element:
+                    await year_element.fill(str(user_profile.birth_year))
+                    logger.debug(f"Filled year with selector: {selector}")
+                    break
+            except:
+                continue
+        
+        if not year_element:
+            logger.warning("Could not find birth year field")
+        
         await self._random_delay(0.3, 0.7)
         
         # Select gender
-        gender_value = "1" if user_profile.gender.lower() == "male" else "2" if user_profile.gender.lower() == "female" else "3"
-        await page.select_option(self.selectors["gender"], value=gender_value)
+        gender_selectors = [
+            "select[id='gender']",
+            "select[aria-label*='Gender']",
+            "div[data-value] >> nth=1"
+        ]
+        
+        gender_element = None
+        for selector in gender_selectors:
+            try:
+                gender_element = await page.query_selector(selector)
+                if gender_element:
+                    logger.debug(f"Found gender element with selector: {selector}")
+                    break
+            except:
+                continue
+        
+        if gender_element:
+            try:
+                if await gender_element.get_attribute("tagName") == "SELECT":
+                    gender_value = "1" if user_profile.gender.lower() == "male" else "2" if user_profile.gender.lower() == "female" else "3"
+                    await page.select_option(gender_element, value=gender_value)
+                else:
+                    # Handle custom dropdown
+                    await gender_element.click()
+                    await self._random_delay(0.5, 1)
+                    
+                    gender_options = [
+                        f"div:has-text('{user_profile.gender.title()}')",
+                        f"li:has-text('{user_profile.gender.title()}')",
+                        f"option:has-text('{user_profile.gender.title()}')"
+                    ]
+                    
+                    for option_selector in gender_options:
+                        try:
+                            option = await page.query_selector(option_selector)
+                            if option:
+                                await option.click()
+                                break
+                        except:
+                            continue
+            except Exception as e:
+                logger.warning(f"Error setting gender: {e}")
+        else:
+            logger.warning("Could not find gender field")
+        
         await self._random_delay(0.5, 1)
         
         # Click next
@@ -477,6 +600,164 @@ class GmailCreator:
             
         except Exception as e:
             logger.warning(f"Could not verify account creation: {e}")
+    
+    async def _set_language_to_english(self, page: Page):
+        """Set the language to English (United States) based on actual Gmail HTML structure"""
+        logger.debug("Setting language to English (United States)")
+        
+        try:
+            # Wait for page to fully load
+            await self._random_delay(2, 3)
+            
+            # First, check if page is already in English by looking for English text
+            english_indicators = [
+                "text=First name",
+                "text=Last name", 
+                "text=Next",
+                "text=Create account",
+                "text=Choose your username"
+            ]
+            
+            for indicator in english_indicators:
+                try:
+                    element = await page.query_selector(indicator)
+                    if element:
+                        logger.debug("Page appears to be in English already")
+                        return
+                except:
+                    continue
+            
+            logger.debug("Looking for language dropdown...")
+            
+            # Wait for footer to be present first
+            try:
+                await page.wait_for_selector('footer.FZfKCe', timeout=5000)
+            except:
+                logger.debug("Footer not found, continuing without language change")
+                return
+            
+            # Look for language dropdown combobox using the exact HTML structure
+            language_button_selectors = [
+                # Most specific selector based on actual HTML structure
+                'div[jsname="oYxtQd"][role="combobox"][aria-haspopup="listbox"]',
+                # Fallback selectors
+                'div[role="combobox"][aria-haspopup="listbox"]',
+                '.VfPpkd-TkwUic[role="combobox"]',
+                'div[jscontroller="yRXbo"] div[role="combobox"]'
+            ]
+            
+            language_button = None
+            successful_selector = None
+            
+            for selector in language_button_selectors:
+                try:
+                    element = await page.query_selector(selector)
+                    if element and await element.is_visible():
+                        language_button = element
+                        successful_selector = selector
+                        logger.debug(f"Found language button with selector: {selector}")
+                        break
+                except Exception as e:
+                    logger.debug(f"Error with selector {selector}: {e}")
+                    continue
+            
+            if not language_button:
+                logger.debug("No language dropdown button found")
+                return
+            
+            # Check if already showing English (United States) by looking at the display span
+            try:
+                display_span = await page.query_selector('#i3.VfPpkd-uusGie-fmcmS[jsname="Fb0Bif"]')
+                if display_span:
+                    current_text = await display_span.text_content()
+                    if current_text and "English (United States)" in current_text:
+                        logger.debug("Language already set to English (United States)")
+                        return
+            except:
+                pass
+            
+            try:
+                logger.debug(f"Attempting to click language button found with: {successful_selector}")
+                
+                # Scroll element into view if needed
+                await language_button.scroll_into_view_if_needed()
+                await self._random_delay(0.5, 1)
+                
+                # Click the language button
+                await language_button.click(timeout=5000)
+                await self._random_delay(1, 2)
+                
+                logger.debug("Language button clicked, waiting for dropdown...")
+                
+                # Wait for dropdown menu to appear using the specific class structure
+                try:
+                    await page.wait_for_selector('.VfPpkd-xl07Ob[jsname="xl07Ob"]', timeout=5000)
+                    await self._random_delay(1, 2)  # Give time for all options to load
+                except:
+                    logger.debug("Dropdown menu did not appear")
+                    await page.keyboard.press('Escape')
+                    return
+                
+                # Look for English (United States) option using the exact HTML structure
+                english_option_selectors = [
+                    # Most specific - exact data-value match from the HTML
+                    'li[data-value="en-US"][role="option"]',
+                    # Backup using text content in the span
+                    'li[role="option"] span[jsname="K4r5Ff"]:has-text("English (United States)")',
+                    # More general text-based approach
+                    'li[role="option"]:has-text("English (United States)")',
+                    # Class-based selector
+                    '.VfPpkd-rymPhb-ibnC6b[data-value="en-US"]'
+                ]
+                
+                english_option = None
+                for selector in english_option_selectors:
+                    try:
+                        await page.wait_for_selector(selector, timeout=3000)
+                        option = await page.query_selector(selector)
+                        if option and await option.is_visible():
+                            english_option = option
+                            logger.debug(f"Found English option with selector: {selector}")
+                            break
+                    except:
+                        continue
+                
+                if english_option:
+                    # Ensure the option is visible and clickable
+                    await english_option.scroll_into_view_if_needed()
+                    await self._random_delay(0.5, 1)
+                    
+                    await english_option.click(timeout=3000)
+                    await self._random_delay(1, 2)
+                    
+                    # Verify the selection worked by checking the display text
+                    try:
+                        display_span = await page.query_selector('#i3.VfPpkd-uusGie-fmcmS[jsname="Fb0Bif"]')
+                        if display_span:
+                            updated_text = await display_span.text_content()
+                            if updated_text and "English (United States)" in updated_text:
+                                logger.info("✅ Language successfully set to English (United States)")
+                                return
+                    except:
+                        pass
+                    
+                    logger.info("✅ Language set to English (United States)")
+                else:
+                    logger.debug("Could not find English (United States) option in dropdown")
+                    # Try to close dropdown
+                    await page.keyboard.press('Escape')
+                    
+            except Exception as click_error:
+                logger.debug(f"Error interacting with language dropdown: {click_error}")
+                # Try to close any open dropdown
+                try:
+                    await page.keyboard.press('Escape')
+                except:
+                    pass
+                
+        except Exception as e:
+            logger.debug(f"Language setting failed (non-critical): {e}")
+            # Continue anyway as this is not critical for account creation
     
     async def _random_delay(self, min_seconds: float, max_seconds: float):
         """Add random delay to mimic human behavior"""
